@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+
+% ---- Layout & fonts ----
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{indentfirst}
+
+% ---- Bibliography ----
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{references.bib}
+
+% ---- Control depth of ToC and numbering ----
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% ---- Meta ----
+\title{Analyzing Emotions in Reddit Gaming Communities}
+\author{Hanyi Xu}
+\date{December 2025}
+
+\begin{document}
+
+% ---- Title page ----
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+
+{\bfseries\Large
+Analyzing Emotions in Gaming Communities\par}
+
+\vspace{2cm}
+
+by \par
+\vspace{0.5cm}
+{\large Hanyi Xu \par}
+
+\vspace{2cm}
+
+Advisors: Dr.~Gregory Kossinets, Dr.~Elena Krumova\par
+
+\vfill
+
+A Master’s Thesis \par
+Submitted to the Department of Quantitative Methods in the Social Sciences \par
+Columbia University in the City of New York\par
+In Fulfillment of the Requirements \par
+For the Degree of Master of Arts \par
+December 2025 \par
+
+\thispagestyle{empty}
+\end{titlepage}
+
+% ---- Table of Contents ----
+\clearpage
+\tableofcontents
+\thispagestyle{empty}
+
+% ---- Start main text ----
+\clearpage
+\setcounter{page}{1}
+
+\input{planning}
+\input{introduction}
+% MORE CHAPTERS
+
+% ---- References ----
+\clearpage
+\printbibliography[heading=bibintoc,title={References}]
+
+\end{document}
