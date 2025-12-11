@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+
+% ---- Layout & fonts ----
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\usepackage{graphicx}
+
+
+% ---- Table ----
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{caption}
+\captionsetup[table]{skip=8pt}
+\usepackage{float}
+
+\usepackage{setspace}
+%\singlespacing
+\doublespacing
+
+% ---- Bibliography ----
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{references.bib}
+
+% ---- Control depth of ToC and numbering ----
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% ---- Hyperlinks and ORCID ----
+\usepackage[hidelinks]{hyperref}
+
+
+% ---- Meta ----
+\title{Why Games Stop Feeling Fun: A Computational Approach to Emotional Demand in Play}  % TODO
+\author{Hanyi Xu}
+\date{December 2025}
+
+\begin{document}
+
+% ---- Title page ----
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+
+{\bfseries\Large
+Why Games Stop Feeling Fun: A Computational Approach to Emotional Demand in Play\par}  % TODO
+
+\vspace{2cm}
+
+by \par
+\vspace{0.5cm}
+{\large Hanyi Xu \par}
+
+% % ORCID
+% \vspace{0.3cm}
+% {\small ORCID: \href{https://orcid.org/0009-0002-0257-3630}{0009-0002-0257-3630} \par}
+
+\vspace{2cm}
+
+Advisors: Dr.~Gregory Kossinets, Dr.~Elena Krumova\par
+
+\vfill
+
+A Master’s Thesis \par
+Submitted to the Department of Quantitative Methods in the Social Sciences \par
+Columbia University in the City of New York\par
+In Fulfillment of the Requirements \par
+For the Degree of Master of Arts \par
+December 2025 \par
+
+\thispagestyle{empty}
+\end{titlepage}
+
+% ---- Front matter: roman numbering ----
+\pagenumbering{roman}
+
+% ---- Abstract ----
+\clearpage
+\section*{Abstract}
+% \addcontentsline{toc}{section}{Abstract}
+\setlength{\parindent}{0pt}
+\input{abstract}
+\setlength{\parindent}{2em}
+
+% ---- Table of Contents ----
+\clearpage
+\tableofcontents
+
+% % Lists of figures/tables
+\clearpage
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+% \clearpage
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+
+% ---- Start main text: arabic numbering ----
+\clearpage
+\pagenumbering{arabic}
+
+% \input{planning}
+\input{introduction}
+\input{literature}
+\input{methodology}
+\input{analysis}
+\input{discussion}
+
+% MORE CHAPTERS
+
+% ---- References ----
+\clearpage
+\printbibliography[heading=bibintoc,title={References}]
+
+\end{document}
