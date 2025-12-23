@@ -3,13 +3,16 @@
 
 \subsection{Research Design}
 
-To ensure the reliability and reproducibility of the analysis results, this study will use multi-level rigor checks. During text sentiment recognition, the DistilBERT model will be fine-tuned and validated. Cross-comparison with manually annotated sample subsets will assess the consistency of predictions and classification accuracy. The study will also investigate how different parameter settings and embedding methods impact the topic structure. In the interactive requirement coding framework, clear annotation rules and mutual annotation processes will ensure consistency and accuracy. Cohen’s Kappa will measure annotation reliability, providing an operational basis for judging requirement categories. By incorporating statistical validation, annotation consistency, and model robustness analysis, this study presents an analytical framework to ensure future results are rigorous, reproducible, and scalable.
+To ensure the reliability and reproducibility of the analysis results, this study employed multi-level rigor checks. During text sentiment recognition, the DistilBERT model was fine-tuned and validated. Cross-comparison with manually annotated sample subsets assessed the consistency of predictions and classification accuracy. The study also investigated how different parameter settings and embedding methods impacted the topic structure. In the interactive requirement coding framework, clear annotation rules and mutual annotation processes ensured consistency and accuracy. Cohen’s Kappa measured annotation reliability and provided an operational basis for judging requirement categories. By incorporating statistical validation, annotation consistency, and model robustness analysis, this study presented an analytical framework that ensured results were rigorous, reproducible, and scalable.
 
-This thesis will use an observational and computational social science design to analyze naturally occurring Reddit posts. As the data are derived from publicly available discussions rather than researcher-generated responses, the study does not involve experimental manipulation or intervention. The research seeks to capture large-scale language patterns and nuanced emotional themes by integrating quantitative natural language processing methods with qualitative topic coding. Reddit serves as an effective platform for this analysis because users often provide candid accounts of their gaming experiences, including emotions such as stress, frustration, burnout, and loneliness.
+This thesis used an observational and computational social science design to analyze naturally occurring Reddit posts. As the data were derived from publicly available discussions rather than researcher-generated responses, the study did not involve experimental manipulation or intervention. The research sought to capture large-scale language patterns and nuanced emotional themes by integrating quantitative natural language processing methods with qualitative topic coding. Reddit served as an effective platform for this analysis because users often provided candid accounts of their gaming experiences, including emotions such as stress, frustration, burnout, and loneliness.
 
-Importantly, this study is explicitly descriptive and theory-validating rather than causal. The analyses aim to examine how interactive demands and emotional experiences are articulated in naturally occurring discourse, not to estimate population-level prevalence or to infer causal relationships between game features and psychological outcomes. All findings should therefore be interpreted as patterns within discourse rather than direct evidence of psychological effects. The primary objectives are to identify sources of stress among players, uncover recurring emotional patterns, and examine personality-related signals present in gaming discourse. These objectives are pursued within the scope of stress- and motivation-relevant discussions, as the dataset is constructed using keyword-based retrieval strategies. Consequently, the study does not claim to represent the full spectrum of gaming discourse, but rather focuses on contexts in which players explicitly reflect on effort, strain, enjoyment, and disengagement.
+Importantly, this study was explicitly descriptive and theory-validating rather than causal. The analyses aimed to examine how interactive demands and emotional experiences were articulated in naturally occurring discourse, not to estimate population-level prevalence or to infer causal relationships between game features and psychological outcomes. All findings should therefore be interpreted as patterns within discourse rather than direct evidence of psychological effects. The primary objectives were to identify sources of stress among players, uncover recurring emotional patterns, and examine personality-related signals present in gaming discourse. These objectives were pursued within the scope of stress- and motivation-relevant discussions, as the dataset was constructed using keyword-based retrieval strategies. Consequently, the study did not claim to represent the full spectrum of gaming discourse, but rather focused on contexts in which players explicitly reflect on effort, strain, enjoyment, and disengagement.
 
-This design positions Reddit discourse as an ecologically valid site for observing how players narrate demand-related experiences in situ. Rather than replacing surveys or experiments, the computational approach complements traditional methods by revealing how theoretical constructs, such as cognitive, emotional, physical, controller, and social demands, emerge and co-occur in everyday player language.
+This design positioned Reddit discourse as an ecologically valid site for observing how players narrated demand-related experiences in situ. Rather than replacing surveys or experiments, the computational approach complemented traditional methods by revealing how theoretical constructs, such as cognitive, emotional, physical, controller, and social demands, emerged and co-occurred in everyday player language.
+
+ 
+
 \subsection{Data Source: Reddit}
 
 This thesis collects data from Reddit, a highly anonymous, discussion-based social platform. Users typically share gaming experiences, emotional reactions, and social interactions through long-form posts. Compared to questionnaires, expressions on Reddit may be more natural and may better reflect how players publicly articulate and narrate their gaming experiences. For this study, self-written Python code was used to systematically collect posts and comments.
@@ -19,13 +22,13 @@ This thesis collects data from Reddit, a highly anonymous, discussion-based soci
 \caption{Data Collection Overview}
 \label{tab:data_collection_overview}
 
-\begin{tabular}{|>{\raggedright\arraybackslash}p{3.2cm}|
-                >{\raggedright\arraybackslash}p{12.3cm}|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{3.2cm}
+                |>{\raggedright\arraybackslash}p{12.3cm}|}
 \hline
 \textbf{Item} & \textbf{Description} \\
 \hline\hline
 
-Data Source & Reddit (public posts and comments) \\
+Data Source & Reddit (a total of 1,457 public posts and comments)\\
 \hline
 Collection Method & Automated Python pipeline using the Reddit API \\
 \hline
@@ -33,15 +36,7 @@ Target Communities (Subreddits) & r/VALORANT, r/Overwatch, r/GlobalOffensive, r/
 \hline
 Collection Strategy & Keyword-based retrieval of stress-related and motivation-related posts \\
 \hline
-Stress Keywords & stress, stressed, tilted, burnout, anxious, anxiety, frustrated, overwhelmed, pressure \\
-\hline
-Motivation Keywords & fun, enjoy, motivation, progress, improve, quit playing \\
-\hline
-Posts per Subreddit & Approximately 50 posts per subreddit (25 stress-related and 25 motivation-related) \\
-\hline
-Comments per Post & Up to 10 comments collected per post \\
-\hline
-Search Time Window & One year \\
+Search Time Window & January 1, 2024 to December 1, 2024\\
 \hline
 Filtering Rules & English only; excludes memes, tech posts, patch notes, and ultra-short posts \\
 \hline
@@ -54,72 +49,108 @@ Processing Tools & Python, PRAW/Pushshift API, Pandas \\
 
 \end{table}
 
-First, this study identifies primary discussion communities related to FPS games. Based on designated program parameters, a crawler retrieves posts from several prominent FPS game communities, namely r/VALORANT, r/Overwatch, r/GlobalOffensive (CS:GO/CS2), r/apexlegends, r/CallOfDuty, r/competitivegaming, r/gaming, and r/truegaming. These communities are highly active on Reddit, with user bases primarily comprising young players fluent in FPS game culture, which aligns with the study’s objectives. The selection of these subreddits is theoretically motivated rather than intended to achieve representativeness. Accordingly, the unit of analysis in this study is not players’ underlying psychological states, but the patterns through which interactive demands are explicitly discussed and problematized in public discourse. The goal is to capture rich, demand-intensive discourse environments where cognitive load, emotional strain, and social pressure are frequently discussed, rather than to approximate the broader gaming population.
+First, this study identified primary discussion communities related to FPS games. Based on designated program parameters, a crawler retrieved posts from several prominent FPS game communities, namely r/VALORANT, r/Overwatch, r/GlobalOffensive (CS:GO/CS2), r/apexlegends, r/CallOfDuty, r/competitivegaming, r/gaming, and r/truegaming. These communities were highly active on Reddit, with user bases primarily comprising young players fluent in FPS game culture, which aligned with the study’s objectives. The selection of these subreddits was theoretically motivated rather than intended to achieve representativeness. Accordingly, the unit of analysis in this study was not players’ underlying psychological states, but the patterns through which interactive demands were explicitly discussed and problematized in public discourse. The goal was to capture rich, demand-intensive discourse environments where cognitive load, emotional strain, and social pressure were frequently discussed, rather than to approximate the broader gaming population.
 
-Regarding data collection, the study emphasizes stress experience and motivational fluctuations. The pipeline deploys groups of keywords to filter for posts concerning stress (e.g., “stress,” “tilted,” “burnout”), motivation (e.g., “fun,” “enjoy,” “quit playing”), and social experiences (e.g., “team,” “solo,” “lonely”). This keyword-based retrieval strategy intentionally conditions the dataset on posts where players explicitly reflect on their perceived effort, strain, enjoyment, or disengagement in discourse. As a result, the dataset should be understood as a corpus of stress- and motivation-relevant discourse rather than a neutral sample of all gaming-related discussion.
+Regarding data collection, the study emphasized stress experience and motivational fluctuations. The pipeline deployed groups of keywords to filter for posts concerning stress (e.g., “stress,” “tilted,” “burnout”), motivation (e.g., “fun,” “enjoy,” “quit playing”), and social experiences (e.g., “team,” “solo,” “lonely”). This keyword-based retrieval strategy intentionally conditioned the dataset on posts where players explicitly reflected on their perceived effort, strain, enjoyment, or disengagement in discourse. As a result, the dataset was understood as a corpus of stress- and motivation-relevant discourse rather than a neutral sample of all gaming-related discussion.
 
-Each subreddit is searched for two sets of keywords: one for stress and another for motivation and enjoyment. By default, the program scrapes approximately 50 relevant posts from each community (25 stress-related and 25 motivation-related), along with up to 10 comments per post, using post IDs to construct interaction threads. The target of approximately 50 posts per subreddit reflects a balance between breadth and depth. This sampling strategy prioritizes cross-community comparability and qualitative saturation of dominant discourse patterns rather than statistical power or population inference. Simultaneously, the crawler records basic metadata for each post, including posting time (UTC), post score, comment count, self-post status, upvote ratio, author information, keyword frequency, and whether the post mentions behavioral cues such as team or solo modes. This information supports the analysis of interaction pressure, social needs, emotional patterns, and differences in game modes.
+%Start of the long table block
+{
+\singlespacing % Forces single spacing for the table
+\small % Optional: Makes font slightly smaller to fit more text
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|
+                   >{\raggedright\arraybackslash}p{5.2cm}|
+                   >{\raggedright\arraybackslash}p{7.1cm}|}
 
-\begin{table}[ht]
-\centering
+% --- CAPTION ---
 \caption{Keyword Groups for Reddit Data Retrieval and Theoretical Motivation}
-\label{tab:keyword_selection_rationale}
-
-\begin{tabular}{|>{\raggedright\arraybackslash}p{3.2cm}|
-                >{\raggedright\arraybackslash}p{5.2cm}|
-                >{\raggedright\arraybackslash}p{7.1cm}|}
+\label{tab:keyword_selection_rationale} \\
 \hline
-\textbf{Keyword Group} & \textbf{Example Keywords} & \textbf{Theoretical Motivation and Role} \\
+
+% --- HEADER FOR FIRST PAGE ---
+\textbf{Keyword Group} & \textbf{Search Queries} & \textbf{Theoretical Motivation and Role} \\
 \hline\hline
+\endfirsthead
 
-Stress / Strain &
-stress, stressed, tilted, burnout, anxious, overwhelmed, pressure &
-Captures explicit articulation of psychological strain and demand overload, central to Interactivity-as-Demand and Mood Management frameworks. Filters for discourse where players reflect on negative affect and exhaustion. \\
+% --- HEADER FOR SUBSEQUENT PAGES (This repeats if table breaks) ---
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline
+\textbf{Keyword Group} & \textbf{Search Queries} & \textbf{Theoretical Motivation and Role} \\
+\hline\hline
+\endhead
+
+% --- FOOTER (Bottom line of the table) ---
+\hline
+\endfoot
+
+% --- TABLE CONTENT ---
+
+% --- RETRIEVAL FILTERS ---
+\textit{Retrieval Filter:} \newline Stress / Strain &
+'stress', 'stressed', 'frustrat', 'tilt', 'tilted', 'rage', 'angry', 'anxiety', 'anxious', 'pressure', 'overwhelm', 'exhaust', 'burnout', 'toxic', 'fatigue', 'tired', 'drain', 'intense', 'tension'&
+\textbf{Data Retrieval:} Captures explicit articulation of psychological strain and demand overload. Used to filter for discourse where players reflect on negative affect. \\
 \hline
 
-Motivation / Enjoyment &
-fun, enjoy, motivation, progress, improve, quit playing &
-Represents both positive engagement and disengagement outcomes, aligned with Uses and Gratifications theory. Enables comparison between restorative and depleting play experiences. \\
+\textit{Retrieval Filter:} \newline Motivation / Enjoyment &
+'motivat', 'fun', 'enjoy', 'reward', 'satisfaction', 'accomplish', 'progress', 'improve', 'skill', 'compete', 'challenge', 'goal', 'achievement', 'rank', 'win', 'lose', 'grind'&
+\textbf{Data Retrieval:} Represents both positive engagement and disengagement outcomes. Enables comparison between restorative and depleting play experiences. \\
+\hline
 \hline
 
-Social Experience &
-team, solo, lonely, friend, toxic, communication &
-Operationalizes social demands in multiplayer contexts, including coordination pressure, belonging, and interpersonal conflict. Identifies discourse shaped by social interaction dynamics. \\
+% --- THE FIVE DEMANDS ---
+\textbf{Cognitive Demand} &
+'think', 'strategy', 'decision', 'focus', 'concentrate', 'aware', 'map knowledge', 'game sense', 'predict', 'react', 'aim', 'track', 'multitask', 'overwhelm', 'confus', 'learn', 'understand' &
+Captures the mental workload required to process game rules and tactical information. Keywords focus on attention, decision-making, and learning processes. \\
 \hline
 
-Demand-Related Vernacular &
-tilt, grind, ranked, solo queue, toxic &
-Accounts for community-specific language that expresses demand-related experiences without academic terminology, improving ecological validity of data collection. \\
+\textbf{Emotional Demand} &
+'feel', 'emotion', 'happy', 'sad', 'angry', 'disappoint', 'excit', 'nervous', 'confident', 'fear', 'joy', 'relief', 'satisf', 'proud', 'shame', 'guilt', 'jealous' &
+Identifies the affective investment in play, including the regulation of intense feelings (both positive and negative) resulting from game outcomes. \\
 \hline
 
-Control / Effort Signals &
-aim, reaction, focus, fatigue, tired &
-Captures physical and controller-related demands through references to effort, bodily strain, and performance execution, which are often implicit rather than emotionally labeled. \\
+\textbf{Social Demand} &
+'team', 'squad', 'solo', 'alone', 'lonely', 'friend', 'toxic', 'communication', 'cooperat', 'coordinate', 'random', 'premade', 'voice chat', 'text chat', 'ping', 'callout', 'flame', 'support'&
+Operationalizes social pressures in multiplayer contexts, covering coordination costs, belonging, toxicity, and communication dynamics. \\
 \hline
 
-\end{tabular}
+\textbf{Physical Demand} &
+'hand', 'wrist', 'fatigue', 'tired', 'strain', 'pain', 'headache', 'eyes', 'posture' &
+Captures somatic experiences and bodily exertion. These keywords identify when gameplay transitions from mental engagement to physical discomfort or exhaustion. \\
+\hline
 
-\end{table}
+\textbf{Controller Demand} &
+'aim', 'reaction', 'reflex', 'muscle memory', 'movement', 'flick', 'track', 'spray control' &
+Focuses on the interface and input execution. Distinct from general physical fatigue, these terms relate to the precision and motor skills required to operate the game controls. \\
+\hline
 
-This study applies clear inclusion and exclusion criteria to ensure the dataset captures meaningful emotional and experiential content relevant to gaming stress and motivation. Posts were included if they described personal experiences related to game play, including emotions such as frustration, loneliness, burnout, or changes in motivation. Posts were excluded if they consisted primarily of memes, jokes, patch notes, hardware discussions, or other technical or comedic content without experiential reflection. Very short posts or those containing mostly links or emojis were also omitted due to insufficient textual context. Only English-language posts were included to ensure linguistic consistency across computational models and to avoid confounds introduced by multilingual sentiment interpretation. This decision prioritizes internal validity over linguistic diversity. After collection, the dataset underwent extensive cleaning and preprocessing to remove noise and artifacts. Deleted posts, bot-generated content, and non-English entries were removed. Standard text-cleaning steps included lowercase conversion, removal of URLs, emojis, and HTML artifacts, followed by tokenization and lemmatization. Throughout data collection and preprocessing, it is acknowledged that Reddit data are subject to systematic biases, including self-selection, moderation practices, and platform norms. Consequently, findings derived from this dataset are interpreted as patterns in publicly articulated player discourse rather than direct measures of players’ private psychological states.
+\end{longtable}
+}
+% End of long table block
 
-Keyword selection plays a central methodological role in this study, as it directly shapes the scope and interpretability of the resulting discourse corpus. Because Reddit data are not randomly sampled but retrieved through query-based search, the inclusion of posts is conditional on the presence of predefined lexical cues related to stress, motivation, and social experience. The keyword sets used in this study were therefore designed to balance theoretical relevance and linguistic coverage: they reflect established constructs in player experience research (e.g., stress, burnout, enjoyment, disengagement) while also incorporating community-specific vernacular commonly used by players to describe demand-related experiences. This approach aligns with best practices in computational text analysis, which emphasize that keyword-driven data collection constitutes an explicit modeling decision rather than a neutral preprocessing step \parencite{grimmer_text_2013}. To reduce construct leakage and over-reliance on any single lexical indicator, multiple semantically related keywords were grouped for each conceptual dimension, and keyword frequency was recorded rather than treated as a binary filter alone. Consequently, the resulting dataset should be understood as a theoretically conditioned sample of stress- and motivation-relevant discourse, optimized for analyzing how interactive demands are articulated, rather than as an exhaustive representation of all gaming-related discussion on Reddit.
+Each subreddit was searched for two sets of keywords: one for stress and another for motivation and enjoyment. This sampling strategy prioritized cross-community comparability and qualitative saturation of dominant discourse patterns rather than statistical power or population inference. Simultaneously, the crawler recorded basic metadata for each post, including posting time (UTC), post score, comment count, self-post status, up-vote ratio, author information, keyword frequency, and whether the post mentioned behavioral cues such as team or solo modes. This information supported the analysis of interaction pressure, social needs, emotional patterns, and differences in game modes.
+
+
+
+This study applied clear inclusion and exclusion criteria to ensure the dataset captured meaningful emotional and experiential content relevant to gaming stress and motivation. Posts were included if they described personal experiences related to game play, including emotions such as frustration, loneliness, burnout, or changes in motivation. Posts were excluded if they consisted primarily of memes, jokes, patch notes, hardware discussions, or other technical or comedic content without experiential reflection. Very short posts or those containing mostly links or emojis were also omitted due to insufficient textual context. Only English-language posts were included to ensure linguistic consistency across computational models and to avoid confounds introduced by multilingual sentiment interpretation. This decision prioritized internal validity over linguistic diversity. After collection, the dataset underwent extensive cleaning and preprocessing to remove noise and artifacts. Deleted posts, bot-generated content, and non-English entries were removed. Standard text-cleaning steps included lowercase conversion, removal of URLs, emojis, and HTML artifacts, followed by tokenization and lemmatization. Throughout data collection and preprocessing, it was acknowledged that Reddit data were subject to systematic biases, including self-selection, moderation practices, and platform norms. Consequently, findings derived from this dataset were interpreted as patterns in publicly articulated player discourse rather than direct measures of players’ private psychological states. 
+
+Keyword selection played a central methodological role in this study, as it directly shaped the scope and interpret ability of the resulting discourse corpus. Because Reddit data were not randomly sampled but were retrieved through query-based search, the inclusion of posts was conditional on the presence of predefined lexical cues related to stress, motivation, and social experience. The keyword sets used in this study were therefore designed to balance theoretical relevance and linguistic coverage: they reflected established constructs in player experience research (e.g., stress, burnout, enjoyment, disengagement) while also incorporating community-specific vernacular commonly used by players to describe demand-related experiences. This approach aligned with best practices in computational text analysis, which emphasize that keyword-driven data collection constitutes an explicit modeling decision rather than a neutral preprocessing step \parencite{grimmer_text_2013}. To reduce construct leakage and over-reliance on any single lexical indicator, multiple semantically related keywords were grouped for each conceptual dimension, and keyword frequency was recorded rather than treated as a binary filter alone. Consequently, the resulting dataset was understood as a theoretically conditioned sample of stress- and motivation-relevant discourse, optimized for analyzing how interactive demands were articulated, rather than as an exhaustive representation of all gaming-related discussion on Reddit.
 
 
 \subsection{Analytical Strategy}
 
-This study adopts a theory-informed computational text analysis strategy to examine how players articulate interactive demands and emotional experiences in online gaming discourse. Reddit posts and comments are treated as naturally occurring texts that reflect how players publicly frame stress, enjoyment, and challenge in game play contexts. Rather than assuming that text directly represents internal psychological states, this approach understands language as a situated expression shaped by platform norms, community conventions, and interactional contexts \parencite{grimmer_text_2013}.
+This study adopted a theory-informed computational text analysis strategy to examine how players articulated interactive demands and emotional experiences in online gaming discourse. Reddit posts and comments were treated as naturally occurring texts that reflected how players publicly framed stress, enjoyment, and challenge in game play contexts. Rather than assuming that text directly represented internal psychological states, this approach understood language as a situated expression shaped by platform norms, community conventions, and interactional contexts \parencite{grimmer_text_2013}.
 
-The analytical design is descriptive and comparative in nature. It focuses on identifying systematic patterns across demand categories and sentiment expressions, instead of making causal claims about player behavior or emotional outcomes. This scope aligns with prior computational communication research that emphasizes interpret ability and theoretical grounding over predictive optimization.
+The analytical design was descriptive and comparative in nature. It focused on identifying systematic patterns across demand categories and sentiment expressions, instead of making causal claims about player behavior or emotional outcomes. This scope aligned with prior computational communication research that emphasized interpret ability and theoretical grounding over predictive optimization.
 
 \subsubsection{Sentiment Analysis}
 
-To capture affective expression in player discourse, this study employs a multi-method sentiment analysis framework. The primary sentiment measure is derived from a transformer-based DistilBERT model. DistilBERT is a compressed version of BERT that preserves contextual semantic representation while reducing computational complexity, which makes it suitable for medium-scale social media datasets \parencite{sanh_distilbert_2020}. Each post or comment is classified into positive, negative, or neutral sentiment categories. DistilBERT sentiment polarity serves as the main affective indicator in this study. All cross-demand sentiment comparisons reported in the Results section rely on this model. To contextualize model-based results, two additional sentiment detection approaches are applied. A keyword-based method identifies explicit affective expressions commonly used in gaming communities, such as terms related to enjoyment, frustration, or balance. In parallel, the VADER sentiment analyzer is used to capture sentiment patterns characteristic of social media language, including negation and intensity cues \parencite{hutto_vader_2014}. These auxiliary methods are not treated as competing ground-truth measures. Instead, they are used to examine robustness and method agreement across different analytical assumptions. Variation across methods is interpreted as reflecting differences in sensitivity to explicit versus implicit emotional expression, a concern that has been widely discussed in text-as-data research \parencite{grimmer_text_2013}. Inter-method agreement statistics are reported to clarify the extent to which conclusions depend on a specific sentiment operationalization.
+To capture affective expression in player discourse, this study employed a multi-method sentiment analysis framework. The primary sentiment measure was derived from a transformer-based DistilBERT model. DistilBERT is a compressed version of BERT that preserves contextual semantic representation while reducing computational complexity, which made it suitable for medium-scale social media datasets \parencite{sanh_distilbert_2020}. Each post or comment was classified into positive, negative, or neutral sentiment categories. DistilBERT sentiment polarity served as the main affective indicator in this study. All cross-demand sentiment comparisons reported in the Results section relied on this model. To contextualize model-based results, two additional sentiment detection approaches were applied. A keyword-based method identified explicit affective expressions commonly used in gaming communities, such as terms related to enjoyment, frustration, or balance. In parallel, the VADER sentiment analyzer was used to capture sentiment patterns characteristic of social media language, including negation and intensity cues \parencite{hutto_vader_2014}. These auxiliary methods were not treated as competing ground-truth measures. Instead, they were used to examine robustness and method agreement across different analytical assumptions. Variation across methods was interpreted as reflecting differences in sensitivity to explicit versus implicit emotional expression, a concern that has been widely discussed in text-as-data research \parencite{grimmer_text_2013}. Inter-method agreement statistics were reported to clarify the extent to which conclusions depended on a specific sentiment operationalization.
 
 \subsubsection{Identifying Gratification Mismatch}
 
-Interactive demands are identified using theory-driven keyword groups derived from the Interactivity-as-Demand framework \textcite{vorderer_interactivity_2021}. Five demand categories are examined: cognitive, emotional, physical, controller, and social. Keyword sets are informed by both theoretical definitions and observed community language in competitive multiplayer subreddits.
+Interactive demands were identified using theory-driven keyword groups derived from the Interactivity-as-Demand framework \textcite{vorderer_interactivity_2021}. Five demand categories were examined: cognitive, emotional, physical, controller, and social. Keyword sets were informed by both theoretical definitions and observed community language in competitive multiplayer subreddits.
 
-Demand detection is implemented as a multi-label process. A single post or comment may be associated with multiple demand categories, reflecting the theoretical assumption that different demands often co-occur during gameplay. This design choice is consistent with prior work emphasizing the layered and simultaneous nature of interactive media demands \parencite{bowman_paradox_2020}. Demand frequency distributions and co-occurrence patterns are analyzed descriptively. These analyses support comparisons across demand types and provide the foundation for linking demands with sentiment expression in subsequent sections.
+Demand detection was implemented as a multi-label process. A single post or comment could be associated with multiple demand categories, reflecting the theoretical assumption that different demands often co-occur during gameplay. This design choice was consistent with prior work emphasizing the layered and simultaneous nature of interactive media demands \parencite{bowman_paradox_2020}. Demand frequency distributions and co-occurrence patterns were analyzed descriptively. These analyses supported comparisons across demand types and provided the foundation for linking demands with sentiment expression in subsequent sections.
 
-The analytical strategy adopted in this study focuses on discursive patterns rather than direct measurement of psychological states. Sentiment labels indicate how players express enjoyment or frustration in language, not the intensity or duration of their experienced emotions. Similarly, demand labels capture how game play challenges are discussed, rather than objective task difficulty or physiological load. Using multiple analytical methods allows for triangulation within this interpretive framework. However, the results should be understood as descriptive evidence of patterned expression in gaming discourse. Claims about causality, individual traits, or clinical outcomes fall outside the scope of the present design.
+The analytical strategy adopted in this study focused on discursive patterns rather than direct measurement of psychological states. Sentiment labels indicated how players expressed enjoyment or frustration in language, not the intensity or duration of their experienced emotions. Similarly, demand labels captured how game play challenges were discussed, rather than objective task difficulty or physiological load. Using multiple analytical methods allowed for triangulation within this interpretive framework. However, the results should be understood as descriptive evidence of patterned expression in gaming discourse. Claims about causality, individual traits, or clinical outcomes fell outside the scope of the present design.
+

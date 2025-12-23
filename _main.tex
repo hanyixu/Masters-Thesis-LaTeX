@@ -15,6 +15,7 @@
 \usepackage{caption}
 \captionsetup[table]{skip=8pt}
 \usepackage{float}
+\usepackage{longtable}
 
 \usepackage{setspace}
 %\singlespacing
@@ -63,12 +64,14 @@ Advisors: Dr.~Gregory Kossinets, Dr.~Elena Krumova\par
 
 \vfill
 
+{\singlespacing
 A Master’s Thesis \par
 Submitted to the Department of Quantitative Methods in the Social Sciences \par
 Columbia University in the City of New York\par
 In Fulfillment of the Requirements \par
 For the Degree of Master of Arts \par
 December 2025 \par
+}
 
 \thispagestyle{empty}
 \end{titlepage}
@@ -90,11 +93,12 @@ December 2025 \par
 
 % % Lists of figures/tables
 \clearpage
-\listoffigures
-\addcontentsline{toc}{section}{List of Figures}
-% \clearpage
 \listoftables
 \addcontentsline{toc}{section}{List of Tables}
+
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+
 
 % ---- Start main text: arabic numbering ----
 \clearpage
@@ -103,10 +107,11 @@ December 2025 \par
 % \input{planning}
 \input{introduction}
 \input{literature}
+\input{rq}
 \input{methodology}
 \input{analysis}
 \input{discussion}
-
+\input{conclusion}
 % MORE CHAPTERS
 
 % ---- References ----

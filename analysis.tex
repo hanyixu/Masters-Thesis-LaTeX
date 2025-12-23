@@ -8,9 +8,9 @@ The analysis uses binary indicators for each demand category. A co-occurrence ma
 
 In contrast, controller and physical demands exhibited weaker correlations with other demand types. These demands were more often discussed as discrete sources of friction, such as control responsiveness or physical discomfort, rather than as part of a broader experiential bundle. Figure~\ref{fig:demand_cooccurrence} presents both the co-occurrence heatmap and the correlation matrix. Together, these visualizations illustrate that expressions of frustration and enjoyment often emerge from the interaction of multiple demands rather than from a single dominant source. Because co-occurrence counts are influenced by overall demand frequency, these findings should be interpreted as reflecting relative coupling patterns rather than strict causal dependence. Future work may apply normalized association measures to further refine these relationships.
  
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{img/demand_correlations.png}
+    \includegraphics[width=0.95\linewidth]{img/demand_correlations.png}
     \caption{Correlation of Interactive Demand Dimensions}
     \label{fig:demand_cooccurrence}
 \end{figure}
@@ -35,7 +35,7 @@ Agreement rates across the three methods indicate moderate to strong convergence
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{img/negative_sentiment_comparison_gridlight.png}
+    \includegraphics[width=0.95\linewidth]{img/negative_sentiment_comparison_gridlight.png}
     \caption{Negative Sentiment by Demand Type Across Three Methods}
     \label{fig:negative_senti_models}
 \end{figure}
@@ -44,69 +44,93 @@ Using DistilBERT as the primary sentiment indicator, clear differences emerge ac
 
 These patterns indicate that controller and physical demands function as primary sources of frustration in player discourse when they fail, whereas cognitive and social demands occupy a more balanced emotional space. Cognitive demands, in particular, are frequently described as difficult but acceptable when perceived as fair and learnable.
 
-\subsubsection{Cross-Method Convergence and Divergence}
+\subsubsection{Illustrative Examples from Player Discourse}
 
-To evaluate the robustness of the findings, sentiment estimates for each demand type were compared across three complementary methods: a domain-specific keyword approach, the VADER rule-based lexicon, and the DistilBERT transformer model. Overall, the three methods converge on the same relative patterns while differing in absolute sensitivity.
-
-Controller demands stand out as the most negative category for all three approaches: the keyword method classifies 33.3\% of controller-related texts as negative, VADER raises this estimate to 48.6\%, and DistilBERT detects 80.6\% negative sentiment, indicating a strong, cross-method consensus that controller and input issues are framed as highly frustrating in discourse. Across demand types, DistilBERT consistently assigns higher negative sentiment scores than the other two methods, suggesting that its contextual modeling is more sensitive to subtle or implicit negativity that is not captured by surface-level keywords or rule-based heuristics. In contrast, the keyword method behaves as the most conservative estimator: it relies on an explicit, domain-specific lexicon, which makes it precise for overt expressions (e.g., ``tilted,'' ``burned out'') but more likely to miss implicit or sarcastic complaints. VADER’s estimates typically fall between these two extremes, reflecting its design as a general-purpose, social-media-optimized lexicon that accounts for shifters like negation, punctuation, and intensifiers without fully leveraging deep contextual semantics.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{img/method_agreement_matrix.png}
-    \caption{VADAR-DistilBERT Agreement Matrix}
-    \label{fig:V-D_Matrix}
-\end{figure}
+Numeric sentiment summaries can obscure how players actually frame demand experiences. To make the patterns concrete, Table~\ref{tab:example_posts_sentiment} presents four short examples drawn from the dataset. Usernames are removed, and excerpts are lightly trimmed for length while preserving wording. DistilBERT scores indicate model confidence, and VADER compound scores provide a rule-based reference point.
 
 
-Table~\ref{tab:three_method_comparison} summarizes sentiment estimates across the three analytical methods for each demand category and provides a basis for direct comparison of both positive and negative classifications.
+These examples illustrate why social demands appear polarized in aggregate. Players may praise teamwork and community in one moment, while describing interpersonal breakdown, quitting, or blame in another. Cognitive demand expressions also show why ``challenging but fair'' language can co-exist with enjoyment, whereas controller issues tend to be framed as disruptive and difficult to tolerate.
 
-\begin{table}[H]
-\centering
+{
+\singlespacing
 \small
 \setlength{\tabcolsep}{6pt}
-\caption{Three-Method Sentiment Comparison}
-\label{tab:three_method_comparison}
+\renewcommand{\arraystretch}{1.15}
 
-\begin{tabular}{lrrrrr}
-\hline
-\textbf{Metric} &
-\textbf{Cognitive} &
-\textbf{Emotional} &
-\textbf{Physical} &
-\textbf{Controller} &
-\textbf{Social} \\
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.22\linewidth}
+                  >{\raggedright\arraybackslash}p{0.52\linewidth}
+                  >{\raggedright\arraybackslash}p{0.20\linewidth}}
+
+% --- CAPTION & LABEL ---
+\caption{Illustrative Reddit Excerpts with Demand Type and Sentiment Scores}
+\label{tab:example_posts_sentiment} \\
 \hline
 
-Count &
-254 & 249 & 94 & 72 & 222 \\
-
-Key + (\%) &
-30.71 & 53.41 & 25.53 & 31.94 & 31.08 \\
-
-Key -- (\%) &
-20.08 & 40.96 & 24.47 & 33.33 & 16.22 \\
-
-VADER + (\%) &
-61.42 & 55.02 & 53.19 & 47.22 & 56.76 \\
-
-VADER -- (\%) &
-31.89 & 39.36 & 39.36 & 48.61 & 30.18 \\
-
-DBERT + (\%) &
-29.92 & 33.33 & 24.47 & 18.06 & 33.78 \\
-
-DBERT -- (\%) &
-68.11 & 65.46 & 74.47 & 80.56 & 63.96 \\
+% --- FIRST PAGE HEADER ---
+\textbf{Example Type} & \textbf{Excerpt (verbatim)} & \textbf{Sentiment Scores} \\
 \hline
-\end{tabular}
-\end{table}
+\endfirsthead
 
-The three-method comparison further clarifies how these differences manifest across positive and negative sentiment patterns. As shown in Table~\ref{tab:three_method_comparison}, VADER consistently reports the highest proportion of positive sentiment across all demand categories, often exceeding 50\% positive for emotional, social, and cognitive demands. DistilBERT yields more moderate positive rates, reflecting a more balanced classification between positive and negative categories when contextual cues are mixed. The keyword method systematically reports the lowest positive sentiment percentages, mirroring its conservative, lexicon-bound nature.
+% --- CONTINUATION HEADER (Appears if table breaks to next page) ---
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline
+\textbf{Example Type} & \textbf{Excerpt (verbatim)} & \textbf{Sentiment Scores} \\
+\hline
+\endhead
 
-On the negative side, DistilBERT detects substantially more negativity, ranging from about 60\% to over 80\% negative across demands, whereas VADER’s negative estimates cluster in the 30--50\% range, and the keyword method yields the lowest negative percentages (roughly 15--40\%). Importantly, these quantitative differences do not undermine the core findings; instead, they provide complementary perspectives on the same underlying affective landscape. All three methods agree on the ordering of negativity—controller $>$ physical $>$ emotional $>$ cognitive $>$ social—which strongly reinforces the conclusion that interaction demands linked to control and physical effort are most likely to be articulated as stressful, while social and cognitive demands, though sometimes negative, are comparatively less aversive in player discourse.
+% --- FOOTER ---
+\hline
+\endfoot
 
-\subsection{Summary: How Players Express Emotion Through Demands}
+% --- CONTENT ---
 
-Across all sentiment analyses, players express enjoyment and frustration in ways that consistently map onto the five interactive demand types. Enjoyment is strongest with social demands, where players value community, teamwork, and positive interactions. Cognitive demands evoke moderate enjoyment and are often described as stimulating when challenges are well designed. In contrast, controller demands elicit the weakest enjoyment, with positive sentiment emerging primarily when systems function seamlessly rather than as a source of active pleasure. Frustration peaks with controller demands; input delay, inconsistency, or mechanical failures are frequently framed as intensely negative experiences in discourse. Physical demands are also commonly associated with frustration, especially when discussions reference fatigue or discomfort.
+Cognitive demand with positive sentiment &
+``I love Ana because she has a high skill ceiling, and it feels rewarding to punish divers who don’t expect you to fight back.'' &
+DistilBERT: Positive (0.9998) \newline
+VADER: 0.7490 \\
+\hline
 
-Meanwhile, cognitive and emotional demands produce moderate levels of frustration in player discourse. These demands are often described as difficult but manageable, fitting expectations for skill-based play. Players rarely discuss balancing demands and emotions directly, but stable positive sentiment frequently accompanies cognitive demands. Players describe `challenging but fair' encounters as enjoyable, suggesting that well-calibrated cognitive load is articulated as fostering engagement rather than detracting from the experience. Social demands are polarizing, driving both peak positive and negative expressions. Cognitive demands occupy a balanced middle ground when well tuned, combining challenge with perceived fairness in player discussions.
+Cognitive demand with negative sentiment &
+``Every game feels like mental overload. I try to think ahead, but the amount of information just burns me out.'' &
+DistilBERT: Negative (0.9987) \newline
+VADER: -0.6123 \\
+\hline
+
+Controller demand with negative sentiment &
+``Is lag compensation in BF6 the reason I’m so frustrated? My inputs feel delayed no matter what I do.'' &
+DistilBERT: Negative (0.9996) \newline
+VADER: -0.6705 \\
+\hline
+
+Social demand with positive sentiment &
+``Very nice work. That was stellar teamwork, and everyone stayed calm even when things went wrong.'' &
+DistilBERT: Positive (0.9999) \newline
+VADER: 0.4754 \\
+\hline
+
+Social demand with negative outcome &
+``My friend rage quit and deleted the game last night. Playing with randoms after that just feels miserable.'' &
+DistilBERT: Negative (0.9998) \newline
+VADER: -0.0258 \\
+\hline
+
+Physical demand with negative sentiment &
+``After a few hours my hands start hurting and I can’t focus anymore. That’s usually when I stop having fun.'' &
+DistilBERT: Negative (0.9979) \newline
+VADER: -0.5316 \\
+\hline
+
+Compound demand (cognitive + social) &
+``I’m trying to track everything, but my teammates keep yelling callouts nonstop. It becomes stressful instead of exciting.'' &
+DistilBERT: Negative (0.9991) \newline
+VADER: -0.4482 \\
+\hline
+
+Compound demand (cognitive + controller) &
+``The mechanics are hard enough already, but when the controls feel inconsistent it completely ruins the experience.'' &
+DistilBERT: Negative (0.9994) \newline
+VADER: -0.5897 \\
+
+\end{longtable}
+}
